@@ -1,12 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/ui/Card.astro';
+
+const allPosts = await Astro.glob('../pages/posts/*.md');
 ---
 
 <Layout title="Welcome to Astro.">
 	<main class="container mx-auto min-h-[calc(100vh-150px)]">
-		<h1 class="header">Welcome to <span class="text-gradient">Astro</span></h1>
+		<h1 class="text-white mb-10 font-bold text-2xl">Welcome to <span class="text-gradient">My Blog :)</span></h1>
 
-		<Card title='Introduction Astro' href="/posts/post-1" body='lorem ipsom dolur sit amet'>
+		<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			{
+				allPosts.map((post) => <Card title={post.frontmatter.title} href={post.url} body={post.frontmatter.description} />)
+			}
+		</section>
 	</main>
 </Layout>
