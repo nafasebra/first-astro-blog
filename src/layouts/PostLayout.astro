@@ -1,0 +1,26 @@
+---
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <main>
+    <slot />
+  </main>
+</Layout>
+<style is:global>
+  main {
+    @apply w-full max-w-[756px] mx-auto space-y-6 py-8 px-4 text-white;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-top: 1rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding-top: 1rem;
+  }
+</style>
